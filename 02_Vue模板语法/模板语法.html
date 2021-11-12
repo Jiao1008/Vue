@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <link rel="stylesheet" type="text/css" href="" />
+        <script type="text/javascript" src="../js/vue.js"></script>
+    <style type="text/css"></style>
+    </head>
+    <body>
+        <!-- 准备好一个容器 -->
+        <div id="root">
+            <h1>插值语法</h1>
+            <h3>你好，{{name}}</h3>
+            <hr/>
+            <h1>指令语法</h1>
+            <a v-bind:href="school.url.toUpperCase()">点我去{{school.name}}学习1</a>
+            <a v-bind:href="school.url">点我去{{name}}学习2</a>
+        </div>
+        
+       
+
+        <script type="text/javascript">
+            Vue.config.productionTip = false //阻止 vue 在启动时生成生产提示。
+            
+            //创建Vue实例
+            
+            new Vue({
+                el:'#root',  //el值通常为css选择器字符串。
+                data:{
+                    name:'jack',
+                    school:{
+                        name:'尚硅谷',
+                        url:'https://www.bilibili.com/video/BV1Zy4y1K7SH?p=7&spm_id_from=pageDriver'
+                    }
+                }
+            })
+        </script>
+    </body>
+    
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root">
+        <h2 :style="{opacity}">欢迎学习Vue</h2>
+    </div>
+
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false;
+
+    const vm = new Vue({
+        el: '#root',
+        data: {
+            opacity: 1
+        }
+    })
+    setInterval(() => {
+        vm.opacity -= 0.01
+        if (vm.opacity <= 0) {vm.opacity = 1}
+    }, 16)
+</script>
+
+</html>

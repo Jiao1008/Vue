@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <!-- <script type="text/javascript" src="../js/vue.js"></script> -->
+    <title>Document</title>
+    <style>
+        .table{
+            margin: 0;
+            padding: 0;
+            border: 0;
+            outline: 0;
+            font-size: 100%;
+            vertical-align: baseline;
+            background: transparent;
+            list-style-type: none; 
+        }
+        th{width: 300px;}
+        td{text-align: center;}
+        
+        .name{
+            width: 300px;
+        }
+        
+        .icon{
+            width: 200px;
+            vertical-align: middle;
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+        <table class="course_table table">
+            <thead>
+                <tr>
+                    <th colspan="2">课程名称</th>
+                    <th>状态</th>
+                    <th>上下架</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="name"><img class="icon" src="https://img14.360buyimg.com/n0/jfs/t1/190090/35/17875/112507/611371beE86832450/bf408018b59a221d.jpg"></td>
+                    <td>常州唯实</td>
+                    <td class="c_">待审核</td>
+                    <td class="gray/orange_btn">课程上下架</td>
+                    <td class="operate">删除</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+
+<!-- <script type="text/javascript">
+    Vue.config.productionTip = false //阻止 vue 在启动时生成生产提示。
+    
+    const vm = new Vue({
+        el: "#root",
+        data:{
+            name: "尚硅谷"
+        }
+        
+    })
+</script> -->
+
+</html>

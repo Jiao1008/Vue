@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <title>列表排序</title>
+</head>
+
+<body>
+
+    <div id="root">
+        <h2>人员列表（遍历数组）</h2>
+        <input type="text" placeholder="请输入名字" v-model="keyWord">
+        <!-- 
+            为每个按钮分别绑定sortType值
+         -->
+        <button @click="sortType = 2">年龄升序</button>
+        <button @click="sortType = 1">年龄降序</button>
+        <button @click="sortType = 0">原顺序</button>
+        <ul>
+            <li v-for="(p,index) of filPersons" :key="p.id">
+                {{p.name}}-{{p.age}}-{{p.sex}}
+            </li>
+        </ul>
+    </div>
+
+</body>
+
+<script type="text/javascript">
+
+    Vue.config.productionTip = false //阻止 vue 在启动时生成生产提示。
+    //用computed实现
+    new Vue({
+        el: "#root",
+        data: {
+            keyWord: '',
+            sortType: 0,    // 0原顺序，1降序，2升序
+            persons: [
+                { id: '001', name: '马冬梅', age: 18, sex: 'female' },
+                { id: '002', name: '周冬雨', age: 16, sex: 'female' },
+                { id: '003', name: '周杰伦', age: 25, sex: 'male' },
+                { id: '004', name: '任嘉伦', age: 21, sex: 'male' }
+            ],
+        },
+        // 计算属性
+        computed: {
+            filPersons() {
+                // 过滤器过滤，按关键字 keyWord 搜索匹配内容
+                const arr = this.filPersons = this.persons.filter((p) => {
+                    // 返回匹配到的内容
+                    // indexOf()   返回 -1，无匹配内容，
+                    //             返回首字符出现的索引，有匹配内容，放在一个新数组里
+                    return p.name.indexOf(this.keyWord) != -1;
+                })
+                // 判断是否需要排序
+                //     this.sortType = 1 或 2 都为 true，程序执行；
+                //     this.sortType = 0 为 false，程序不执行
+                if (this.sortType) {
+                    arr.sort((a,b)=>{
+                        return this.sortType === 1 ? b.age-a.age : a.age-b.age;
+                    })
+                }
+                // 返回过滤后的数组
+                return arr;
+            }
+        }
+    })
+
+</script>
+
+</html>
