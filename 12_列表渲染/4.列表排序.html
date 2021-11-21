@@ -30,37 +30,51 @@
 </body>
 
 <script type="text/javascript">
-
     Vue.config.productionTip = false //阻止 vue 在启动时生成生产提示。
-    //用computed实现
+        //用computed实现
     new Vue({
         el: "#root",
         data: {
             keyWord: '',
-            sortType: 0,    // 0原顺序，1降序，2升序
-            persons: [
-                { id: '001', name: '马冬梅', age: 18, sex: 'female' },
-                { id: '002', name: '周冬雨', age: 16, sex: 'female' },
-                { id: '003', name: '周杰伦', age: 25, sex: 'male' },
-                { id: '004', name: '任嘉伦', age: 21, sex: 'male' }
-            ],
+            sortType: 0, // 0原顺序，1降序，2升序
+            persons: [{
+                id: '001',
+                name: '马冬梅',
+                age: 18,
+                sex: 'female'
+            }, {
+                id: '002',
+                name: '周冬雨',
+                age: 16,
+                sex: 'female'
+            }, {
+                id: '003',
+                name: '周杰伦',
+                age: 25,
+                sex: 'male'
+            }, {
+                id: '004',
+                name: '任嘉伦',
+                age: 21,
+                sex: 'male'
+            }],
         },
         // 计算属性
         computed: {
             filPersons() {
                 // 过滤器过滤，按关键字 keyWord 搜索匹配内容
                 const arr = this.filPersons = this.persons.filter((p) => {
-                    // 返回匹配到的内容
-                    // indexOf()   返回 -1，无匹配内容，
-                    //             返回首字符出现的索引，有匹配内容，放在一个新数组里
-                    return p.name.indexOf(this.keyWord) != -1;
-                })
-                // 判断是否需要排序
-                //     this.sortType = 1 或 2 都为 true，程序执行；
-                //     this.sortType = 0 为 false，程序不执行
+                        // 返回匹配到的内容
+                        // indexOf()   返回 -1，无匹配内容，
+                        //             返回首字符出现的索引，有匹配内容，放在一个新数组里
+                        return p.name.indexOf(this.keyWord) != -1;
+                    })
+                    // 判断是否需要排序
+                    //     this.sortType = 1 或 2 都为 true，程序执行；
+                    //     this.sortType = 0 为 false，程序不执行
                 if (this.sortType) {
-                    arr.sort((a,b)=>{
-                        return this.sortType === 1 ? b.age-a.age : a.age-b.age;
+                    arr.sort((a, b) => {
+                        return this.sortType === 1 ? b.age - a.age : a.age - b.age;
                     })
                 }
                 // 返回过滤后的数组
@@ -68,7 +82,6 @@
             }
         }
     })
-
 </script>
 
 </html>
