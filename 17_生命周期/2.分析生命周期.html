@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="https://unpkg.com/vue/dist/vue.js"></script>
+    <title>分析生命周期</title>
+</head>
+
+<body>
+    <!-- 准备好一个容器 -->
+    <div id="root">
+        <h2>当前的n值是：{{n}}</h2>
+        <button @click="add">点我n+1</button>
+        <button @click="destroy">点我销毁vm</button>
+        <img src="../asset/img/生命周期.png" style="width: 1000px;">
+    </div>
+
+</body>
+
+<script type="text/javascript">
+    Vue.config.productionTip = false;  // 阻止Vue在启动时生成生产提示
+
+    const vm = new Vue({
+        el: '#root',
+        // template: `
+        //     <div  id="root">
+        //         <h2>当前的n值是：{{n}}</h2>
+        //         <button @click="add">点我n+1</button>
+        //     </div>
+        // `,
+        data: {
+            n: 1,
+        },
+        methods: {
+            add() {
+                console.log('add')
+                this.n++
+                console.log(this.n)
+            },
+            destroy() {
+                console.log('destroy')
+                this.$destroy()
+            }
+        },
+        watch:{
+            n(){
+            console.log("n变了")   
+            }
+        },
+        beforeCreate() {
+            console.log('beforeCreate')
+            // console.log(this)
+            // debugger;
+        },
+        created() {
+            console.log('created')
+            // console.log(this)
+            // debugger;
+        },
+        beforeMount() {
+            console.log('beforeMount')
+            // console.log(this)
+            // document.querySelector('h2').innerHTML = "好啊好啊"    // 此时操作DOM，最终都不奏效
+            // debugger;
+        },
+        mounted() {
+            console.log('mounted')
+            // console.log(this.$el)
+            // document.querySelector('h2').innerHTML = 666666    // 此时操作DOM均奏效，但 尽量避免
+            // debugger;
+        },
+        beforeUpdate() {
+            console.log('beforeUpdate')
+            // console.log(this.n)
+            // debugger;
+        },
+        updated() {
+            console.log('updated')
+            // console.log(this.n)
+            // debugger;
+        },
+        beforeDestroy(){
+            console.log('beforeDestroy')
+            // console.log(this.n)
+            // this.add()
+            // debugger;
+        },
+        destroyed(){
+            console.log('destroyed')
+            console.log(this.n)
+            this.add()
+        },
+    })
+
+</script>
+
+</html>

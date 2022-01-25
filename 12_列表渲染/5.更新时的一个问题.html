@@ -58,12 +58,8 @@
 
                 // 先点击按钮，后打开vue开发者工具，修改成功
                 // 先打开vue开发者工具，后点击按钮，修改失败
-                this.persons[0] = {
-                    id: '001',
-                    name: '马哈哈',
-                    age: 30,
-                    sex: 'female'
-                }
+                // this.persons[0] = {id: '001', name: '马哈哈', age: 30, sex: 'female'}   // 不奏效
+                this.persons.splice(0, 1, {id: '001', name: '马哈哈', age: 30, sex: 'female'})
             }
         }
     })
