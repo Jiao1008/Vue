@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="https://unpkg.com/vue/dist/vue.js"></script>
+    <title>一个重要的内置关系</title>
+</head>
+
+<body>
+    <!-- 
+		1.一个重要的内置关系：VueComponent.prototype.__proto__ === Vue.prototype
+		2.为什么要有这个关系：让组件实例对象（vc）可以访问到 Vue原型上的属性、方法。
+	-->
+    <!-- 准备好一个容器 -->
+    <div id="root">
+
+    </div>
+
+</body>
+
+<script type="text/javascript">
+    Vue.config.productionTip = false;  // 阻止Vue在启动时生成生产提示
+
+    // 定义一个构造函数
+    /* function Demo() {
+        this.a = 1;
+        this.b = 2
+    }
+
+    // 创建一个Demo实例对象
+    const d = new Demo()
+
+    console.log(Demo)   // function
+    // console.log(Demo.prototype)   // 显式原型属性
+    console.log(d)     // Demo(){}
+    // console.log(d.__proto__)   // 隐式原型属性
+    Demo.prototype.x = 100
+
+    console.log(Demo.prototype.x === Demo.x)   // false
+
+    console.log(Demo.prototype.x)   // 100
+    console.log(Demo.x)   // undefined
+    console.log(d.x)   // 100  */
+
+
+
+
+
+</script>
+
+</html>
