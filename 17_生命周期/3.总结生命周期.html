@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 
@@ -67,4 +68,75 @@
 
 </script>
 
+=======
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <title>总结生命周期</title>
+</head>
+
+<body>
+    <!-- 
+        常用的生命周期钩子：
+            1.mounted：发送ajax请求、启动定时器、绑定自定义事件、订阅消息等【初始化操作】
+            2.beforeDestroy：清除定时器、解绑自定义事件、取消订阅消息等【收尾工作】
+
+        关于销毁Vue实例：
+            1.销毁后借助Vue开发者工具看不到任何信息
+            2.销毁后，自定义事件 会失效，但 原生DOM事件 依然有效
+            3.一般不会在 beforeDestroy操作数据，因为即便操作数据，也不会再触发更新流程了
+     -->
+
+    <div id="root">
+        <h2 :style="{opacity: opacity}">欢迎学习Vue</h2>
+        <button @click="stop">点我停止变换</button>
+        <button @click="wo">点我</button>
+    </div>
+
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false;
+    // Vue管理的this指向Vue
+    // 创建Vue实例
+    const vm = new Vue({
+        el: '#root',
+        data: {
+            a: true,
+            opacity: 1
+        },
+        methods: {
+            stop() {
+                this.$destroy()
+                // clearInterval(this.timer)     // 自杀
+            },
+            wo() {
+                // console.log(this.timer)
+            }
+        },
+        // Vue完成模板的解析并把真实的DOM元素放入页面后（挂载完毕）调用mounted
+        // 开头
+        mounted() {
+            this.timer = setInterval(() => {
+                console.log(this.timer)
+                this.opacity -= 0.01;
+                if (this.opacity < 0) {
+                    this.opacity = 1;
+                }
+            }, 10)
+        },
+        // 结尾
+        beforeDestroy() {
+            console.log('vm即将被干掉了')
+            clearInterval(this.timer)   // 不管自杀还是他杀，只要this.$destroy()被调用就杀
+        }
+    })
+
+</script>
+
+>>>>>>> db1a4cb614b101ab4d9cf22f3a2e8b51fc665adf
 </html>
