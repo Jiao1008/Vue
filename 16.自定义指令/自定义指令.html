@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>自定义指令</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style type="text/css"></style>
+</head>
+
+<body>
+    <!-- 
+        需求1：定义一个v-big指令，和v-text功能类似，但会把绑定的数值放大10被。
+        需求2：定义一个v-focus指令，和v-bind类似，但可以让其所绑定的input元素默认获取焦点。
+     -->
+    <div id="root">
+        <h2>当前的n值是：<span v-text="n"></span></h2>
+        <h2>放大10倍后的n值是：<span v-big="n"></span></h2>
+        <button @click="n++">点我n+1</button>
+        <button @click="n--">点我n-1</button>
+        <br /><br />
+        输入：<input type="text" v-focus="focus"/>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#root',
+            data: {
+                n: 21,
+            },
+            directives: {
+                big(element, binding) {
+                    // console.log(element, binding.value)
+                    element.innerText = binding.value * 10
+                    // console.dir(element instanceof HTMLElement)     // a是否是HTMLElement的元素
+                },
+                focus:{
+                    
+                }
+            },
+            methods: {}
+        });
+    </script>
+</body>
+
+</html>

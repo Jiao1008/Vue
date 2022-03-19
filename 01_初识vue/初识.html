@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <link rel="stylesheet" type="text/css" href="" />
+        <script type="text/javascript" src="./js/vue.js"></script>
+    <style type="text/css"></style>
+    </head>
+    <body>
+        <!-- 准备好一个容器 -->
+        <div id="demo">
+            <h1>Hello, {{name.toUpperCase()}},{{address}}</h1>
+            
+        </div>
+        
+       
+
+        <script type="text/javascript">
+            Vue.config.productionTip = false //阻止 vue 在启动时生成生产提示。
+            
+            //创建Vue实例
+            
+            new Vue({
+                el:'#demo',  //el值通常为css选择器字符串。
+                data:{
+                    name:'hbghbh年',
+                    address:'江苏常州'
+                }
+            })
+        </script>
+    </body>
+    
+</html>
